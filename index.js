@@ -3,10 +3,10 @@ const axios = require("axios");
 
 const filename = "alarm.wav";
 const audioDuration = 6;
-const alarmDuration = 20;
-const checkEvery = 10000;
+const alarmDuration = 120;
+const checkEvery = 15000;
 
-const url = "https://www.cinemacity.cz/cz/data-api-service/v1/quickbook/10101/dates/in-cinema/1052/until/2024-08-21?attr=&lang=cs_CZ";
+const url = "https://www.cinemacity.cz/cz/data-api-service/v1/quickbook/10101/dates/in-group/prague/with-film/5297s2r/until/2024-08-21?attr=&lang=cs_CZ";
 // date that should be available at the cinema when new tickets are issued
 const searchDate = "2023-08-31";
 
@@ -33,10 +33,11 @@ async function main(dots = 0) {
     playAlarm(filename, alarmDuration / audioDuration);
     return;
   }
-  await new Promise((resolve) => setTimeout(resolve, checkEvery));
   console.clear();
   console.log("Checking..." + ".".repeat(dots) + " ".repeat(15 - dots));
   dots = (dots + 1) % 15;
+
+  await new Promise((resolve) => setTimeout(resolve, checkEvery));
   main(dots);
 }
 
