@@ -4,9 +4,7 @@ const axios = require("axios");
 const filename = "alarm.wav";
 const audioDuration = 6;
 const alarmDuration = 20;
-const checkEvery = 500;
-
-require("dotenv").config();
+const checkEvery = 10000;
 
 const url = "https://www.cinemacity.cz/cz/data-api-service/v1/quickbook/10101/dates/in-cinema/1052/until/2024-08-21?attr=&lang=cs_CZ";
 // date that should be available at the cinema when new tickets are issued
